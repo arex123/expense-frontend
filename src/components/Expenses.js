@@ -1,15 +1,16 @@
 import ExpenseItem from './ExpenseItem.js'
-// Write your code here
+import './Expenses.css'
+import Card from './Card'
 function Expenses({expenses}){
-  return <div> {expenses.map((expense, index) => {
+  return <Card className="expenses"> {expenses.map((expense, index) => {
         return (
           <ExpenseItem
             key={expense.id}
             date={expense.date}
             title={expense.title}
             price={expense.price}
-          ></ExpenseItem>
+          />
         );
-      })}</div>
+      })}</Card>
 }
 export default Expenses

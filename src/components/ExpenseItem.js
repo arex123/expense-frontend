@@ -1,19 +1,21 @@
-// Write your code here:
-function ExpenseItem(){
-  return <>
-    <div>
-      15 August 2023
+
+import "./ExpenseItem.css";
+
+function ExpenseItem(props) {
+  return (
+    <div className="expense-item">
+      <div>{props.date.toISOString()}</div>
+      <div className="expense-item__description">
+        <h2>{props.title}</h2>
+        <div className="expense-item__price">${props.price}</div>
+      </div>
+      <div className="expense-item__location">
+        <div>London</div>
+        <div>${props.location}</div>
+      </div>
+      
     </div>
-    <div>
-      <p>Amount</p>
-      <p>Book</p>
-      <p>$10</p>
-    </div>
-    <div>
-      <p>Location</p>
-      <p>Delhi</p>
-    </div>
-    
-  </>
+  );
 }
-export default ExpenseItem
+
+export default ExpenseItem;

@@ -1,6 +1,6 @@
 import ExpenseItem from './ExpenseItem.js'
 import './Expenses.css'
-import Card from './Card'
+import Card from '../UI/Card.js'
 function Expenses({expenses}){
   return <Card className="expenses"> {expenses.map((expense, index) => {
         return (

@@ -10,6 +10,8 @@ const ExpenseForm = (props) => {
     date:""    
   })
 
+  const [show,setShow] = useState(false)
+
   const changeHandler=(event)=>{
     // setData({
     //   data,
@@ -29,9 +31,13 @@ const ExpenseForm = (props) => {
   const handleFormSubmit = (event)=>{
     event.preventDefault()
     // console.log("form data ",data)
+    if(show==false){
+        setShow(true)
+        return
+    }
     const eData = {
         title:event.target.title.value,
-        amount:event.target.amount.value,
+        price:+event.target.amount.value,
         date:new Date(event.target.date.value)
     }
     props.onExpenseSave(eData)
@@ -41,11 +47,13 @@ const ExpenseForm = (props) => {
         amount:"",
         date:""
     }})
+
+    setShow(false)
     
   }
   return (
     <form onSubmit={handleFormSubmit}>
-      <div className="new-expense__controls">
+     { show && <div className="new-expense__controls">
         <div className="new-expense__control">
           <label htmlFor="title">Title</label>
           <input type="text" id="title" onChange={changeHandler} name="title" value={data.title}/>
@@ -66,8 +74,9 @@ const ExpenseForm = (props) => {
             value={data.date}
           />
         </div>
-      </div>
-      <div className="new-expense__actions">
+      </div>}
+      <div className="new-expense__actions" style={{textAlign:show==false?"center":"right"}}>
+        {show && <p className="form_cancel" onClick={()=>setShow(false)}>Cancel</p>}
         <button type="submit">Add Expense</button>
       </div>
     </form>

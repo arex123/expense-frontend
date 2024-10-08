@@ -1,7 +1,10 @@
 import ExpenseItem from './ExpenseItem.js'
 import './Expenses.css'
 import Card from '../UI/Card.js'
-function Expenses({expenses}){
+function Expenses({expenses,newExpense}){
+
+  console.log("-->> new expene ",newExpense)
+
   return <Card className="expenses"> {expenses.map((expense, index) => {
         return (
           <ExpenseItem

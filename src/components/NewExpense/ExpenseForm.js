@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [data,setData]=useState({
     title:"",
     amount:"",
@@ -28,13 +28,20 @@ const ExpenseForm = () => {
 
   const handleFormSubmit = (event)=>{
     event.preventDefault()
-    console.log("form data ",data)
+    // console.log("form data ",data)
+    const eData = {
+        title:event.target.title.value,
+        amount:event.target.amount.value,
+        date:new Date(event.target.date.value)
+    }
+    props.onExpenseSave(eData)
     setData((prev)=>{return {
         ...prev,
         title:"",
         amount:"",
         date:""
     }})
+    
   }
   return (
     <form onSubmit={handleFormSubmit}>
